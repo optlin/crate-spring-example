@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		maven { url "https://dl.bintray.com/crate/crate/" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'org.opt.crate'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	maven { url "https://dl.bintray.com/crate/crate/" }
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile group: 'io.crate', name: 'crate-jdbc', version: '2.2.0'
+	compile group: 'io.crate', name: 'crate-client', version: '0.57.6'
+	compile group: 'io.crate', name: 'crate', version: '2.3.2'
+	compile group: 'org.springframework.data', name: 'spring-data-crate', version: '1.0.0'
+	compile group: 'org.springframework.data', name: 'spring-data-commons-core', version: '1.4.1.RELEASE'
+}
